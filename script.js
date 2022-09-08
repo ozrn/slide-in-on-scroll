@@ -22,9 +22,14 @@ const sliderImages = document.querySelectorAll('.slide-in');
 
 function checkSlide(e){
   sliderImages.forEach(sliderImage => {
-    // deciding whether the image is on page or note;
-  const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
-  console.log(slideInAt);
+    // deciding whether the image is on page or not;
+  const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2; // half way through the image
+
+  // bottom of the image;
+  const imageBottom = sliderImage.offsetTop + sliderImage.height;
+  const isHalfShown = slideInAt > sliderImage.offsetTop;
+  const isNotScrolledPast = window.scrollY < imageBottom;
+  isHalfShown && isNotScrolledPast ? sliderImage.classList.add('active') : sliderImage.classList.remove('active');
 
   });
 }
