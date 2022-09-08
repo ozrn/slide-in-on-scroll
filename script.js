@@ -13,3 +13,20 @@ function debounce(func, wait = 20, immediate = true) {
     if (callNow) func.apply(context, args);
   };
 }
+
+// select all the images we'll work here
+
+const sliderImages = document.querySelectorAll('.slide-in');
+
+// create a function that will run every time the user scrolls;
+
+function checkSlide(e){
+  sliderImages.forEach(sliderImage => {
+    // deciding whether the image is on page or note;
+  const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+  console.log(slideInAt);
+
+  });
+}
+
+window.addEventListener('scroll', debounce(checkSlide)); // debounce fn will only run checkSlide fn once very 20 milliseconds!!
